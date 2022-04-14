@@ -176,7 +176,7 @@ router.get('/api/auth0/logged', (req, res) => {
       return res.status(401).json('Error de autenticacion')
     }
     else {
-      console.log(whoIs)
+      //
       return res.status(201).json({Status: 'Usuario logueado. ID = '+ whoIs, Token: token, Email: userEmail})
     }
 })

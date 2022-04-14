@@ -141,7 +141,7 @@ exports.authenticated = async function authenticated(req, res, next) {
             return res.status(403).json("El mail ingresado no coincide con su credencial de autorizacion.")
           } 
           if(email === undefined && emailHeaders === undefined){
-            console.log("estoy en el 2do if")
+            //console.log("estoy en el 2do if")
             next()
           }
           else {
@@ -204,18 +204,28 @@ async function userAuthenticated(req, res, next) {
 
 // Usuario es admin
 exports.isAdmin = async function isAdmin(req, res, next) {
+  console.log("estoy en isAdmin")
   let email = req.body.email
   let emailHeaders = req.headers.email
   let emailCorrecto = ""
   //console.log(req.headers.authorization)
   if (email === undefined) {
     emailCorrecto = emailHeaders
-  } else if(emailHeaders === undefined) {
+  } 
+  else if(emailHeaders === undefined) {
     emailCorrecto = email
-  } else {
-    res.status(403).json("Error de credencial de usuarios")
   }
-
+  else if(email === undefined && emailHeaders === undefined){
+    //console.log('Estoy en el if')
+    await userAuthenticated(req)
+    //console.log("userData: "+ userData.email)
+    emailCorrecto = userData
+    // console.log("email?" + emailCorrecto)
+    next()
+  }else {
+    
+    return res.status(403).json("Error de credencial de usuarios")
+  }
   if(!emailCorrecto) {
 
      res.status(403).json("Email incorrecto.")
@@ -227,13 +237,12 @@ exports.isAdmin = async function isAdmin(req, res, next) {
       //console.log("verificar email " + verificarMail)
       if (verificarMail != null) {
         next()
+      
+      
+      } else {
+        //console.error("Acceso denegado: ");
+        return res.status(403).json( "Acceso denegado. No tiene permisos para ejecutar esta operacion.");
       }
-      //   console.error("Acceso denegado: ");
-      //   return res.status(403).send({ status: "Acceso denegado" });
-      // } else {
-      //   //console.log("AUTORIZADO")
-      //   next();
-      // }
     }
   catch(err){
     console.log(err.message)
