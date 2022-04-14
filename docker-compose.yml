@@ -1,0 +1,26 @@
+app:
+  env_file: ./.env.docker
+  image: delilahs-resto-img
+  container_name: app
+  restart: always
+  links:
+    - redis
+    - mongodb
+  ports:
+    - "5000:5000"
+    
+redis:
+  #host: delilahs-resto-img
+  image: redis:alpine
+  container_name: redis
+  ports:
+    - "6379:6379"
+
+mongodb:
+  #host: delilahs-resto-img
+  image: mongo
+  container_name: mongodb
+  ports:
+    - "27017:27017"
+
+  

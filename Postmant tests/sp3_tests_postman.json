@@ -1,0 +1,751 @@
+{
+	"info": {
+		"_postman_id": "cff0be77-e278-4a87-a4b5-f4c06b34248a",
+		"name": "Sprint_Project_3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Usuario Coco",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"var token = jsonData.token;",
+									"postman.setEnvironmentVariable(\"token\", token); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Coco\",\n    \"apellido\": \"Argento\",\n    \"nacimiento\": \"12/12/1983\",\n    \"email\": \"cocoargento@gmail.com\",\n    \"pais\": \"Argentina\",\n    \"pass\": \"cocoargento\",\n    \"direccion\": \"San Martin 2323\",\n    \"telefono\": \"dsnoasd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://delilahs-resto.ml//usuario/signup/",
+							"protocol": "https",
+							"host": [
+								"delilahs-resto",
+								"ml"
+							],
+							"path": [
+								"",
+								"usuario",
+								"signup",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario Pepito",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"var token = jsonData.token;",
+									"postman.setEnvironmentVariable(\"token\", token); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer {{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"nombre\": \"Pepito\",\n        \"apellido\": \"Grillo\",\n        \"nacimiento\": \"5/31/1882\",\n        \"email\": \"pinocho@gmail.com\",\n        \"direccion\": \"la tierra del nunca jamas 123\",\n        \"telefono\": \"0821389231\",\n        \"pais\": \"GeppetoLand\",\n        \"pass\": \"pepito\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://delilahs-resto.ml/usuario/signup/",
+							"protocol": "https",
+							"host": [
+								"delilahs-resto",
+								"ml"
+							],
+							"path": [
+								"usuario",
+								"signup",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/usuario (login)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"var token = jsonData.token;",
+									"postman.setEnvironmentVariable(\"token\", token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"cocoargento@gmail.com\",\n  \"password\": \"cocoargento\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://delilahs-resto.ml/usuario",
+							"protocol": "https",
+							"host": [
+								"delilahs-resto",
+								"ml"
+							],
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/usuario (login de admin)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"var token = jsonData.token;",
+									"postman.setEnvironmentVariable(\"token\", token); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "email",
+								"value": "adm@adm",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"password\": \"DeLiLaHs\",\n   \"email\": \"adm@adm\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://delilahs-resto.ml/usuario",
+							"protocol": "https",
+							"host": [
+								"delilahs-resto",
+								"ml"
+							],
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lista usuarios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"adm@adm\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://delilahs-resto.ml/usuario",
+							"protocol": "https",
+							"host": [
+								"delilahs-resto",
+								"ml"
+							],
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "lista productos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"cocoargento@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://delilahs-resto.ml/productos",
+							"protocol": "https",
+							"host": [
+								"delilahs-resto",
+								"ml"
+							],
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/productos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "email",
+								"value": "adm@adm",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "email",
+								"value": "cocoargento@gmail.com",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"adm@adm\",\n    \"codigo\": \"lomiChico\",\n    \"nombre\":\"Lomito Comun\",\n    \"descripcion\": \"Lomito\",\n    \"tipo\": \"Comida\",\n    \"tamanio\": \"Normal\",\n    \"precio\": 700,\n    \"stock\": 1200\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://delilahs-resto.ml/productos",
+							"protocol": "https",
+							"host": [
+								"delilahs-resto",
+								"ml"
+							],
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "producto",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "email",
+								"value": "adm@adm",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "email",
+								"value": "cualqui@nose",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"adm@adm\",\n    \"codigo\": \"HB1\",\n    \"nvocodigo\":\"lomiGigante\",\n    \"nombre\":\"Lomito gigante\",\n    \"descripcion\": \"Lomito gigante para 15 personas\",\n    \"tipo\": \"Comida\",\n    \"tamanio\": \"Gigante\",\n    \"precio\": 9999,\n    \"stock\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://delilahs-resto.ml/productos",
+							"protocol": "https",
+							"host": [
+								"delilahs-resto",
+								"ml"
+							],
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedidos",
+			"item": [
+				{
+					"name": "pedido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "email",
+								"value": "cocoargento@gmail.com",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "email",
+								"value": "adm@adm",
+								"description": "Mail Admin",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"email\": \"cocoargento@gmail.com\",\n        \"codProducto\": \"HB2\",\n        \"cantidad\": \"10\",\n        \"direccion\": \"\",\n        \"formaPago\": \"FT\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://delilahs-resto.ml/pedidos",
+							"protocol": "https",
+							"host": [
+								"delilahs-resto",
+								"ml"
+							],
+							"path": [
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pedidos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"cocoargento@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://delilahs-resto.ml/pedidos",
+							"protocol": "https",
+							"host": [
+								"delilahs-resto",
+								"ml"
+							],
+							"path": [
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Medios de pago",
+			"item": [
+				{
+					"name": "Medios de pago",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "email",
+								"value": "cocoargento@gmail.com",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "email",
+								"value": "adm@adm",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"cocoargento@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://delilahs-resto.ml/mediosDePago",
+							"protocol": "https",
+							"host": [
+								"delilahs-resto",
+								"ml"
+							],
+							"path": [
+								"mediosDePago"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista Medios de pago admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "email",
+								"value": "adm@adm",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"adm@adm\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://delilahs-resto.ml/mediosDePago/admin",
+							"protocol": "https",
+							"host": [
+								"delilahs-resto",
+								"ml"
+							],
+							"path": [
+								"mediosDePago",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medio de pago",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "email",
+								"value": "adm@adm",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "email",
+								"value": "cocoargento@gmail.com",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"adm@adm\",\n    \"codigo\": \"QR\",\n    \"descripcion\": \"Pago a traves de codigo QR.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://delilahs-resto.ml/mediosDePago",
+							"protocol": "https",
+							"host": [
+								"delilahs-resto",
+								"ml"
+							],
+							"path": [
+								"mediosDePago"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medio de pago",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "email",
+								"value": "adm@adm",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "email",
+								"value": "cocoargento@gmail.com",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"adm@adm\",\n    \"codigo\": \"TDEB\",\n    \"nvoCodigo\":\"CH\",\n    \"descripcion\": \"Pago a traves de cheque.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://delilahs-resto.ml/mediosDePago",
+							"protocol": "https",
+							"host": [
+								"delilahs-resto",
+								"ml"
+							],
+							"path": [
+								"mediosDePago"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medios de pago",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "email",
+								"value": "adm@adm",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"adm@adm\",\n    \"codigo\":\"MP\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://delilahs-resto.ml/mediosDePago",
+							"protocol": "https",
+							"host": [
+								"delilahs-resto",
+								"ml"
+							],
+							"path": [
+								"mediosDePago"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://delilahs-resto.ml/",
+					"protocol": "https",
+					"host": [
+						"delilahs-resto",
+						"ml"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
