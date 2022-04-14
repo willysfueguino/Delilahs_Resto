@@ -39,7 +39,9 @@ const swaggerOptions = {
     "./api/app.js",
     "./api/routes/pedido.js",
     "./api/routes/mediosDePago.js",
+    "./api/controllers/paypal.js ",
     "./api/routes/producto.js",
+    
   ],
   tags: [
     {
@@ -66,6 +68,10 @@ const swaggerOptions = {
       name: "Medios de pago",
       description: "Operaciones sobre medios de pago",
     },
+    {
+      name: "Paypal",
+      description: "Operaciones con paypal,",
+    },
   ],
 };
 
@@ -91,7 +97,7 @@ const productoRoutes = require("./routes/producto");
 const pedidoRoutes = require("./routes/pedido");
 const mediosDePagoRoutes = require("./routes/mediosDePago");
 const auth0router = require('./auth/auth0')
-const paypalRouter = require('./controllers/paypal-practica')
+const paypalRouter = require('./controllers/paypal')
 
 app.use(authRoutes);
 app.use(usuarioRoutes);

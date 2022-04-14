@@ -1,13 +1,7 @@
 const router = require('express').Router()
 const request = require('request');
 
-/**
- * 1️⃣ Paso
- * Crear una aplicacion en Ppaypal
- * Aqui agregamos las credenciales de nuestra app de PAYPAL
- * https://developer.paypal.com/developer/applications (Debemos acceder con nuestra cuenta de Paypal)
- * [Cuentas de TEST] https://developer.paypal.com/developer/accounts/
- */
+
 
 const CLIENT = process.env.PAYPAL_ID;
 const SECRET = process.env.PAYPAL_TOKEN;
@@ -15,9 +9,6 @@ const PAYPAL_API = 'https://api-m.sandbox.paypal.com'; // Live https://api-m.pay
 
 const auth = { user: CLIENT, pass: SECRET }
 
-/**
- * Establecemos los contraladores que vamos a usar
- */
 
 const createPayment = (req, res) => {
 
@@ -33,8 +24,8 @@ const createPayment = (req, res) => {
             brand_name: `MiTienda.com`,
             landing_page: 'NO_PREFERENCE', // Default, para mas informacion https://developer.paypal.com/docs/api/orders/v2/#definition-order_application_context
             user_action: 'PAY_NOW', // Accion para que en paypal muestre el monto del pago
-            return_url: `http://localhost:5000/execute-payment`, // Url despues de realizar el pago
-            cancel_url: `http://localhost:5000/cancel-payment` // Url despues de realizar el pago
+            return_url: `http://localhost:5000/api/paypal/execute-payment`, // Url despues de realizar el pago
+            cancel_url: `http://localhost:5000/api/paypal/cancel-payment` // Url despues de realizar el pago
         }
     }
     //https://api-m.sandbox.paypal.com/v2/checkout/orders [POST]
@@ -44,7 +35,7 @@ const createPayment = (req, res) => {
         body,
         json: true
     }, async (err, response) => {
-        console.log("RESPUESTA DESDE PAYPAL ===============================>: ")
+        //console.log("RESPUESTA DESDE PAYPAL ===============================>: ")
         let approved = await response.body.links
         let isApproved
         approved = approved.forEach( (element) => {
@@ -60,13 +51,11 @@ const createPayment = (req, res) => {
     })
 }
 
-/**
- * Esta funcion captura el dinero REALMENTE
- * @param {*} req 
- * @param {*} res 
- */
 const executePayment = (req, res) => {
-    const token = req.query.token; //<-----------
+    let token = req.query.token;
+    if (!req.query.token){
+        token = req.body.token
+    }
 
     request.post(`${PAYPAL_API}/v2/checkout/orders/${token}/capture`, {
         auth,
@@ -76,11 +65,7 @@ const executePayment = (req, res) => {
         res.json({ data: response.body })
     })
 }
-/**
- * ⚡⚡⚡⚡⚡⚡  1️⃣
- * @param {*} req 
- * @param {*} res 
- */
+
 const createProduct = (req, res) => {
     const product = {
         name: 'Subscripcion Youtube',
@@ -101,11 +86,6 @@ const createProduct = (req, res) => {
     })
 }
 
-/**
- * ⚡⚡⚡⚡⚡⚡  2️⃣
- * @param {*} req 
- * @param {*} res 
- */
 const createPlan = (req, res) => {
     const { body } = req
     //product_id
@@ -154,11 +134,6 @@ const createPlan = (req, res) => {
     })
 }
 
-/**
- * ⚡⚡⚡⚡⚡⚡  3️⃣
- * @param {*} req 
- * @param {*} res 
- */
 const generateSubscription = (req, res) => {
     const { body } = req
 
@@ -187,38 +162,52 @@ const generateSubscription = (req, res) => {
 }
 
 /**
- * 2️⃣ Creamos Ruta para generar pagina de CHECKOUT
+ * @swagger
+ * /api/paypal/create-payment:
+ *  post:
+ *    tags: [Paypal]
+ *    summary: Crear pago de paypal.sionsssfdds
+ *    description: Se debe ejecutar el link obtenido mediante navegador para iniciar secion en Paypal y poder ejecutar el pago correctamente.
+ *    responses:
+ *      '200':
+ *       description: Pedido de pago creado exitosamente.
  */
 
 //    http://localhost:3000/create-payment [POST]
-router.post(`/create-payment`, createPayment)
+router.post(`/api/paypal/create-payment`, createPayment)
 
 /**
- * 3️⃣ Creamos Ruta para luego que el cliente completa el checkout 
- * debemos de capturar el dinero!
+ * @swagger
+ * /api/paypal/execute-payment:
+ *  get:
+ *    tags: [Paypal]
+ *    summary: Ejecutar pago de paypal.
+ *    description: Ejecutar pago de paypal. 
+ *    responses:
+ *      '200':
+ *       description: Pago ejecutado exitosamente.
  */
+router.get(`/api/paypal/execute-payment`, executePayment)
 
-router.get(`/execute-payment`, executePayment)
 
+// //--------------------------------- SUBSCRIPCIONES --------------------------------------
 
-//--------------------------------- SUBSCRIPCIONES --------------------------------------
+// /**
+//  * ⚡ Crear producto en PAYPAL
+//  */
 
-/**
- * ⚡ Crear producto en PAYPAL
- */
+// router.post(`/create-product`, createProduct)
 
-router.post(`/create-product`, createProduct)
+// /**
+//  * ⚡ Crear plan en PAYPAL
+//  */
 
-/**
- * ⚡ Crear plan en PAYPAL
- */
+// router.post(`/create-plan`, createPlan)
 
-router.post(`/create-plan`, createPlan)
+// /**
+//  * ⚡ Crear subscripcion en PAYPAL
+//  */
 
-/**
- * ⚡ Crear subscripcion en PAYPAL
- */
-
-router.post(`/generate-subscription`, generateSubscription)
+// router.post(`/generate-subscription`, generateSubscription)
 
 module.exports = router
