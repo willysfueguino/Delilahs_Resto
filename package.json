@@ -6,8 +6,8 @@
   "scripts": {
     "start": "nodemon ./api/app.js",
     "kill-port": "npx kill-port 5000",
-    "dev": "npx kill-port 5000 && NODE_ENV=development nodemon api/app",
-    "prod": "npx kill-port 5000 && NODE_ENV=production nodemon api/app",
+    "dev": "npx kill-port 5000 && NODE_ENV=development nodemon ./api/app",
+    "prod": "npx kill-port 5000 && NODE_ENV=production nodemon ./api/app",
     "test": "mocha --recursive --timeout 10000"
   },
   "keywords": [],

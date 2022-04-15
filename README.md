@@ -4,10 +4,7 @@
 
 Sprint Project Nº4 del curso de Back End. (Mi APP Full!)
 
-#### Instrucciones de instalación:
-
-docker build -t delilahs-resto-img .
-docker-compose up
+#### Instrucciones de verificación de configuración y ejecución desde AWS:
 
 1. Iniciar sesión siguiendo el link `Console Login Link` desde el archivo `TechReviewer.csv`, utilizando el nombre de usuario y la contraseñas provistas en el archivo zip.
 2. En la barra de herramientas a la izquierda de la página de EC2, desplazar el cursor hacia abajo hasta la sección "Auto Scaling" y hacer click en `Grupos de Auto Scaling`.
@@ -18,4 +15,11 @@ docker-compose up
 7. El nombre de dominio de la Api es `delilahs-resto.ml` (subdominio registrado es www ).
 8. Se incluye en el repositorio y en el archivo zip, la collección de Postman que se usó para hacer los tests de cada uno de los endpoints correspondientes, separados por categorías (Medios de Pago, Usuarios, etc.)
 
+#### Instrucciones de instalación y ejecución de modo local usando Docker y Docker Compose:
+
+1. Descomprimir el archivo zip.
+2. Abrir una consola en el directorio donde se descomprimió el archivo (Debe estar a la vista en el navegador de archivos el archivo Dockerfile).
+3. Ejecutar el comando `docker build -t delilahs-resto-img .` para crear la imagen de la aplicación que usará Docker Compose.
+4. Ejecutar el comando `docker-compose up`. **Se debe contar con una conexión a internet durante este paso** ya que se descargarán las imagenes de Redis y Mongo que se usarán de base para manipular datos y caché.
+5. Modificar el archivo `.env.docker.example` para configurar las variables de entorno que se usarán.
 ---
