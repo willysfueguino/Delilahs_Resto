@@ -71,7 +71,7 @@ exports.createProduct = async function (req,res, next) {
   try{
     await product.save()
   
-    res.status(201).json("el producto " + product.nombre + " fue creado exitosamente")
+    res.status(201).json("El producto " + product.nombre + " fue creado exitosamente.")
   }
   catch (err){
     res.status(500).send("Error")
@@ -80,18 +80,13 @@ exports.createProduct = async function (req,res, next) {
 
 exports.updateProducts =async function(req, res, next){
   let {codigo, nvocodigo, nombre, descripcion, tipo, tamanio, precio, stock} = req.body;
-  
-  try{
-  let codigoEncontrado = await productos.findOne( {codigo} )
-  if (!codigoEncontrado ){
-    return res.status(400).json("Codigo de producto a modificar incorrecto.")
-  }
-  }
-  catch (err){
-    next()
-  }
 
   try{
+    let codigoEncontrado = await productos.findOne( {codigo} )
+    if (!codigoEncontrado ){
+      return res.status(400).json("Codigo de producto a modificar incorrecto.")
+    }
+  
     let productoActualizado = await productos.findOneAndUpdate(
         { codigo: codigo },
         { $set: {codigo: nvocodigo,
@@ -105,7 +100,7 @@ exports.updateProducts =async function(req, res, next){
             returnNewDocument: true }
         )
   
-      res.status(201).json("El producto  fue actualizado exitosamente.")
+      return res.status(201).json(`El producto ${codigoEncontrado.nombre} fue modificado exitosamente.`)
     }
     catch(err){
       console.log(err)

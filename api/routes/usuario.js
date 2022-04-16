@@ -10,21 +10,14 @@ const Controller = require("../controllers/usuarioController");
  *  get:
  *    tags: [Usuarios]
  *    summary: Lista de usuarios.
- *    description: Lista de usuarios. 
- *    requestBody:
- *      description: Objeto email de usuario admin.
+ *    description: Obtener listado de usuarios registrados. Se requiere ser usuario administrador. 
+ *    parameters:
+ *    - name: email
+ *      in: header
+ *      description: Email de usuario a logueado.
+ *      type: email
+ *      example: adm@adm
  *      required: true
- *      content:
- *        application/json:
- *           schema:
- *             type: object
- *             properties:
- *               email:
- *                 description: Email de usuario a admin.
- *                 type: email
- *                 example: admin@localhost.com
- *             required:
- *               - email
  *    responses:
  *      '200':
  *       description: Lista de usuarios

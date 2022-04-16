@@ -12,12 +12,13 @@ const authController = require("../auth/authController");
  *  get:
  *    tags: [Pedidos]
  *    summary: Listado de pedidos.
+ *    description: Ver lista de pedidos. Se requiere credenciales de usuario administrador.
  *    parameters:
  *    - name: email
  *      in: header
- *      description: Email de usuario logueado.
+ *      description: Email de usuario a logueado.
  *      type: email
- *      example: adm@adm.com
+ *      example: adm@adm
  *      required: true
  *    responses:
  *       200:
@@ -37,9 +38,9 @@ router.get("/api/pedidos/", authController.authenticated, pedidosController.list
  *    parameters:
  *    - name: email
  *      in: header
- *      description: Email de usuario logueado.
+ *      description: Email de usuario a logueado.
  *      type: email
- *      example: cocoargento@gmail.com
+ *      example: adm@adm
  *      required: true
  *    requestBody:
  *      description: Datos para la creacion de un pedido nuevo.

@@ -45,10 +45,10 @@ exports.signin = async function signin(req, res, next) {
     let verificarPass = await usuarios.findOne({pass: {$eq: password}} ,{ pass:1,  '_id': false})
     
     if(!verificarMail){
-      return res.status(403).json("Debe ingresar un email.")
+      return res.status(403).json("Email no encontrado. Verifique el email ingresado.")
     }
     if(!verificarPass){
-      return res.status(403).json("Debe ingresar una contraseña válida.")
+      return res.status(403).json("Contraseña incorrecta. Verifique contraseña ingresada.")
     }
     
     if(verificarMail.email === email){
@@ -204,7 +204,6 @@ async function userAuthenticated(req, res, next) {
 
 // Usuario es admin
 exports.isAdmin = async function isAdmin(req, res, next) {
-  console.log("estoy en isAdmin")
   let email = req.body.email
   let emailHeaders = req.headers.email
   let emailCorrecto = ""

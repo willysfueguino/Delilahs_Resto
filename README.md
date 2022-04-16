@@ -20,6 +20,8 @@ Sprint Project Nº4 del curso de Back End. (Mi APP Full!)
 1. Descomprimir el archivo zip.
 2. Abrir una consola en el directorio donde se descomprimió el archivo (Debe estar a la vista en el navegador de archivos el archivo Dockerfile).
 3. Ejecutar el comando `docker build -t delilahs-resto-img .` para crear la imagen de la aplicación que usará Docker Compose.
-4. Ejecutar el comando `docker-compose up`. **Se debe contar con una conexión a internet durante este paso** ya que se descargarán las imagenes de Redis y Mongo que se usarán de base para manipular datos y caché.
+4. Ejecutar el comando `docker-compose up --remove-orphans`. **Se debe contar con una conexión a internet durante este paso** ya que se descargarán las imagenes de Redis y Mongo que se usarán de base para manipular datos y caché.
 5. Modificar el archivo `.env.docker.example` para configurar las variables de entorno que se usarán.
+6. Detener el servicio de `redis-server` y `mongod` para que la aplicación funcione correctamente.
+7. Ejecutar el comando `docker-compose up`.
 ---

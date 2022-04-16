@@ -17,12 +17,11 @@ const authController = require("../auth/authController");
  *      in: header
  *      description: Email de usuario a logueado.
  *      type: email
- *      example: cocoargento@gmail.com
+ *      example: adm@adm
  *      required: true
- *    
  *    responses:
  *      '200':
- *       description: Login de usuario satisfactorio.
+ *       description: Se obtiene la lista de medios de pago
  *      '404':
  *       description: Usuario no encontrado (email y/o contraseña incorrecta)
  */
@@ -44,9 +43,9 @@ router.get(
  *    parameters:
  *    - name: email
  *      in: header
- *      description: Email de usuario admin logueado.
+ *      description: Email de usuario a logueado.
  *      type: email
- *      example: adm@adm.com
+ *      example: adm@adm
  *      required: true
  *    responses:
  *       200:
@@ -66,13 +65,13 @@ router.get(
  *  post:
  *    tags: [Medios de pago]
  *    summary: Crear medio de pago
- *    description: Crear medio de pago
+ *    description: Crear medio de pago. Requiere credenciales de usuario administrador.
  *    parameters:
  *    - name: email
  *      in: header
  *      description: Email de usuario a logueado.
  *      type: email
- *      example: adm@adm.com
+ *      example: adm@adm
  *      required: true
  *    requestBody:
  *      description: Objeto medio de pago nuevo.
@@ -112,13 +111,13 @@ router.post(
  *  delete:
  *    tags: [Medios de pago]
  *    summary: Borrar medio de pago
- *    description: Borrar medio de pago
+ *    description: Borrar medio de pago. Requiere credenciales de usuario administrador.
  *    parameters:
  *    - name: email
  *      in: header
- *      description: Email de usuario admin a logueado.
+ *      description: Email de usuario a logueado.
  *      type: email
- *      example: adm@adm.com
+ *      example: adm@adm
  *      required: true
  *    requestBody:
  *      description: Objeto medio de pago a eliminar.
@@ -138,7 +137,7 @@ router.post(
  *      201:
  *       description: Forma de pago eliminada
  *      400:
- *       description: Forma de pago no eliminada
+ *       description: Forma de pago no eliminada (Verificar código de medio de pago ingresado).
  *
  */
 
@@ -155,13 +154,13 @@ router.delete(
  *  put:
  *    tags: [Medios de pago]
  *    summary: Modificar medio de pago
- *    description: Modificar medio de pago
+ *    description: Modificar medio de pago. Requiere credenciales de usuario administrador.
  *    parameters:
  *    - name: email
  *      in: header
  *      description: Email de usuario a logueado.
  *      type: email
- *      example: adm@adm.com
+ *      example: adm@adm
  *      required: true
  *    requestBody:
  *      description: Objeto medio de pago a modificar.
@@ -191,7 +190,7 @@ router.delete(
  *      201:
  *       description: Forma de pago actualizada exitosamente
  *      400:
- *       description: Forma de pago no actualizada
+ *       description: Forma de pago no actualizada (verificar código de medio de pago a modificar).
  *
  */
 router.put(

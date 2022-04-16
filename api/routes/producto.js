@@ -15,7 +15,7 @@ const authController = require("../auth/authController");
  *      in: header
  *      description: Email de usuario logueado.
  *      type: email
- *      example: adm@adm.com
+ *      example: adm@adm
  *      required: true
  *    responses:
  *       200:
@@ -31,13 +31,13 @@ router.get("/api/productos", authController.authenticated, productsController.fi
  *  post:
  *    tags: [Productos]
  *    summary: Creacion de producto nuevo.
- *    description : Creacion de producto nuevo.
+ *    description : Creacion de producto nuevo. Requiere credenciales de usuario administrador.
  *    parameters:
  *    - name: email
  *      in: header
  *      description: Email de usuario admin logueado.
  *      type: email
- *      example: adm@adm.com
+ *      example: adm@adm
  *      required: true
  *    requestBody:
  *      description: Datos de producto nuevo.
@@ -103,13 +103,13 @@ router.post(
  *  put:
  *    tags: [Productos]
  *    summary: Actualizacion de producto.
- *    description : Actualizacion de producto.
+ *    description: Actualizacion de producto. Requiere credenciales de usuario administrador.
  *    parameters:
  *    - name: email
  *      in: header
  *      description: Email de usuario admin logueado.
  *      type: email
- *      example: adm@adm.com
+ *      example: adm@adm
  *      required: true
  *    requestBody:
  *      description: Datos de producto a modificar.

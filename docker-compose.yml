@@ -1,6 +1,6 @@
 app:
   env_file: ./.env.docker
-  image: delilahs-resto-img
+  image: delilahs-resto-img:latest
   container_name: app
   restart: always
   links:

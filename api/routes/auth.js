@@ -9,26 +9,20 @@ const Controller = require("../auth/authController");
  *  post:
  *    tags: [Usuarios]
  *    summary: Login de usuario.
- *    description: Login de usuario.
- *    requestBody:
- *      description: Email y contraseña de usuario a loguearse
+ *    description: Email y contraseña de usuario a loguearse
+ *    parameters:
+ *    - name: email
+ *      in: header
+ *      description: Email de usuario a loguearse.
+ *      type: email
+ *      example: adm@adm
  *      required: true
- *      content:
- *        application/json:
- *           schema:
- *             type: object
- *             properties:
- *               email:
- *                 description: Email de usuario a loguearse.
- *                 type: email
- *                 example: admin@localhost.com
- *               pass:
- *                 description: Contraseña de usuario a loguearse
- *                 type: string
- *                 example: 1234
- *             required:
- *               - pass
- *               - email
+ *    - name: password
+ *      in: header
+ *      description: Contraseña de usuario a loguearse
+ *      type: string
+ *      example: DeLiLaHs
+ *      required: true
  *    responses:
  *      '200':
  *       description: Login de usuario satisfactorio.
