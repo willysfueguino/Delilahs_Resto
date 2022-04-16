@@ -2,7 +2,8 @@
 
 #### Descripción
 
-Sprint Project Nº4 del curso de Back End. (Mi APP Full!)
+Delilahs Resto API 
+![alt text](https://github.com/willysfueguino/Delilahs_Resto/blob/main/pictures/logo.png "Delilahs Logo")
 
 #### Instrucciones de verificación de configuración y ejecución desde AWS:
 
