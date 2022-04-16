@@ -27,8 +27,19 @@ Sprint Project Nº4 del curso de Back End. (Mi APP Full!)
 
 #### Instrucciones para verificar el funcionamiento de la API a través de Postman:
 
+**NOTA: Si se ejecutan las pruebas de modo local, primerp se debe instalar y ejecutar la API a través de Docker Compose.**
 1. Abrir Postman
 2. Hacer click en `File > Import`
 3. En la carpeta donde descomprimió o clonó el repositorio, en la carpeta `Postman tests`, elija el archivo a importar (hay 2 archivos, uno llamado `Delilahs Resto CLOUD` para probar la versión online de la api, y otro llamado `Delilahs Resto LOCALHOST` para hacer pruebas de forma local).
 4. Ejecutar las pruebas correspondientes, *verificando* los parametros pasados en el body y el header de los request.
+
+#### Instrucciones para verificar el funcionamiento de la API a través de Swagger:
+**NOTA: Si se ejecutan las pruebas de modo local, primerp se debe instalar y ejecutar la API a través de Docker Compose.**
+1. Abrir el navegador web.
+2. a) Si se ejecutan las pruebas de modo local, dirigirse a `http://localhost:APP_PORT/api-docs` (donde APP_PORT es el puerto definido en `.env.docker` y en el archivo `docker-compose.yml`)
+3. Para probar correctamente los endpoints, se debe ejecutar primero el endpoint `http://localhost:APP_PORT/api-docs/#/Usuarios/post_api_auth_signin` (Las credenciales de ejemplo son las del usuario administrador para poder comprobar correctamente los endpoints que requieren privilegios de administrador).
+4. Luego de loguearse, copiar el token recibido desde el backend (sin las comillas).
+5. Hacer click en la parte superior derecha de la página, en el botón "Authorize" (tiene una imagen de un candado). Se abrirá un cuadro de diálogo.
+6. En la casilla de texto "Value", pegar el token recibido sin las comillas, luego hacer click en "Authorize". Ejemplo de Token: `eyJhbGciOiJIUzI1Nig5HnR5cCI6IkpXVCJ9.eyJ1aWQiOnsiZW1haWwiOiJhZG1AYWR5H5wicGFzcyI6IkRlTGlMYUhzIn0sImlhdCI6MTY1MDA3NDc2NiwiZXhwIjoxNjUwMDg5MTY2fQ.zxkhymxF2DD3JZikVi6sQfsVmdY60RmhIcVPic4lOL`
+7. Divertirse probando la API! 
 
