@@ -1,8 +1,4 @@
-## Curso de Desarrollo Web Backend de Acámica
-
-#### Descripción
-
-Delilahs Resto API 
+# Delilahs Resto API 
 ![alt text](https://github.com/willysfueguino/Delilahs_Resto/blob/main/pictures/logo.png "Delilahs Logo")
 
 #### Instrucciones de verificación de configuración y ejecución desde AWS:
