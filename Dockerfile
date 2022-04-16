@@ -28,11 +28,11 @@ ENV $ AUTH0_CLIENT_ID
 ENV $ AUTH0_CLIENT_SECRET
 
 #Inicializado de server
-EXPOSE 5000
+EXPOSE ${APP_PORT}
 #Initial commands for the container
 #RUN npm install -g nodemon
 RUN npm install
-RUN apk --update add redis
+#RUN apk --update add redis
 RUN npm audit fix
 CMD ["npm", "start"]
 #RUN nodemon ./api/app.js

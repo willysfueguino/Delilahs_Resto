@@ -2,7 +2,6 @@ app:
   env_file: ./.env.docker
   image: delilahs-resto-img:latest
   container_name: app
-  restart: always
   links:
     - redis
     - mongodb
@@ -22,5 +21,9 @@ mongodb:
   container_name: mongodb
   ports:
     - "27017:27017"
+  command:
+    - '--quiet'
+    - '--logpath'
+    - '/var/log/mongodb/mongod.log'
 
   

@@ -17,11 +17,18 @@ Sprint Project Nº4 del curso de Back End. (Mi APP Full!)
 
 #### Instrucciones de instalación y ejecución de modo local usando Docker y Docker Compose:
 
-1. Descomprimir el archivo zip.
+1. Descomprimir el archivo zip. **Alternativamente puede ejecutar el comando `git clone https://github.com/willysfueguino/Delilahs_Resto.git` desde una consola.
 2. Abrir una consola en el directorio donde se descomprimió el archivo (Debe estar a la vista en el navegador de archivos el archivo Dockerfile).
-3. Ejecutar el comando `docker build -t delilahs-resto-img .` para crear la imagen de la aplicación que usará Docker Compose.
-4. Ejecutar el comando `docker-compose up --remove-orphans`. **Se debe contar con una conexión a internet durante este paso** ya que se descargarán las imagenes de Redis y Mongo que se usarán de base para manipular datos y caché.
-5. Modificar el archivo `.env.docker.example` para configurar las variables de entorno que se usarán.
+3. Modificar el archivo `.env.docker.example` para configurar las variables de entorno que se usarán.
+4. Ejecutar el comando `docker build -t delilahs-resto-img .` para crear la imagen de la aplicación que usará Docker Compose.
+6. Modificar el archivo `docker-compose.yml` de ser necesario para modificar variables de entorno.
 6. Detener el servicio de `redis-server` y `mongod` para que la aplicación funcione correctamente.
 7. Ejecutar el comando `docker-compose up`.
----
+
+#### Instrucciones para verificar el funcionamiento de la API a través de Postman:
+
+1. Abrir Postman
+2. Hacer click en `File > Import`
+3. En la carpeta donde descomprimió o clonó el repositorio, en la carpeta `Postman tests`, elija el archivo a importar (hay 2 archivos, uno llamado `Delilahs Resto CLOUD` para probar la versión online de la api, y otro llamado `Delilahs Resto LOCALHOST` para hacer pruebas de forma local).
+4. Ejecutar las pruebas correspondientes, *verificando* los parametros pasados en el body y el header de los request.
+
