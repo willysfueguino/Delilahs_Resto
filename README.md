@@ -1,6 +1,4 @@
 # Delilahs Resto API 
-![alt text](https://github.com/willysfueguino/Delilahs_Resto/blob/main/pictures/logo.png "Delilahs Logo")
-
 #### Instrucciones de verificación de configuración y ejecución desde AWS:
 
 1. Iniciar sesión siguiendo el link `Console Login Link` desde el archivo `TechReviewer.csv`, utilizando el nombre de usuario y la contraseñas provistas en el archivo zip.
