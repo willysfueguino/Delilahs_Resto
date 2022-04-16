@@ -1,5 +1,5 @@
 # Delilahs Resto API 
-#### Instrucciones de verificación de configuración y ejecución desde AWS:
+### Instrucciones de verificación de configuración y ejecución desde AWS:
 
 1. Iniciar sesión siguiendo el link `Console Login Link` desde el archivo `TechReviewer.csv`, utilizando el nombre de usuario y la contraseñas provistas en el archivo zip.
 2. En la barra de herramientas a la izquierda de la página de EC2, desplazar el cursor hacia abajo hasta la sección "Auto Scaling" y hacer click en `Grupos de Auto Scaling`.
@@ -10,7 +10,7 @@
 7. El nombre de dominio de la Api es `delilahs-resto.ml` (subdominio registrado es www ).
 8. Se incluye en el repositorio y en el archivo zip, la collección de Postman que se usó para hacer los tests de cada uno de los endpoints correspondientes, separados por categorías (Medios de Pago, Usuarios, etc.)
 
-#### Instrucciones de instalación y ejecución de modo local usando Docker y Docker Compose:
+### Instrucciones de instalación y ejecución de modo local usando Docker y Docker Compose:
 
 1. Descomprimir el archivo zip. **Alternativamente puede ejecutar el comando `git clone https://github.com/willysfueguino/Delilahs_Resto.git` desde una consola.
 2. Abrir una consola en el directorio donde se descomprimió el archivo (Debe estar a la vista en el navegador de archivos el archivo Dockerfile).
@@ -20,7 +20,7 @@
 6. Detener el servicio de `redis-server` y `mongod` para que la aplicación funcione correctamente.
 7. Ejecutar el comando `docker-compose up`.
 
-#### Instrucciones para verificar el funcionamiento de la API a través de Postman:
+### Instrucciones para verificar el funcionamiento de la API a través de Postman:
 
 **NOTA: Si se ejecutan las pruebas de modo local, primerp se debe instalar y ejecutar la API a través de Docker Compose.**
 1. Abrir Postman
@@ -28,7 +28,7 @@
 3. En la carpeta donde descomprimió o clonó el repositorio, en la carpeta `Postman tests`, elija el archivo a importar (hay 2 archivos, uno llamado `Delilahs Resto CLOUD` para probar la versión online de la api, y otro llamado `Delilahs Resto LOCALHOST` para hacer pruebas de forma local).
 4. Ejecutar las pruebas correspondientes, *verificando* los parametros pasados en el body y el header de los request.
 
-#### Instrucciones para verificar el funcionamiento de la API a través de Swagger:
+### Instrucciones para verificar el funcionamiento de la API a través de Swagger:
 **NOTA: Si se ejecutan las pruebas de modo local, primerp se debe instalar y ejecutar la API a través de Docker Compose.**
 1. Abrir el navegador web.
 2. a) Si se ejecutan las pruebas de modo local, dirigirse a `http://localhost:APP_PORT/api-docs` (donde APP_PORT es el puerto definido en `.env.docker` y en el archivo `docker-compose.yml`)
