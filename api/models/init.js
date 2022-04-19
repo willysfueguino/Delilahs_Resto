@@ -175,7 +175,7 @@ async function createPedidosDemo(){
 
 async function VerificarDatosIniciales() {
   try{
-        let existeUsuarioDemo = await usuarios.findOne({email: 'cocoargento@gmail.com'}).maxTimeMS(30000)
+        let existeUsuarioDemo = await usuarios.findOne({$query: {email: 'cocoargento@gmail.com'},$maxTimeMS: 30000 })
   
         if( existeUsuarioDemo === null) {
           try {
@@ -186,7 +186,7 @@ async function VerificarDatosIniciales() {
             }
         }
 
-        let adminExiste = await usuarios.findOne({isAdmin: true}).maxTimeMS(30000)
+        let adminExiste = await usuarios.findOne({$query: {isAdmin: true}, $maxTimeMS: 30000})
                                   //COMPARAR OBJETO MONGOOSE CON STRING PASADO POR EL BODY
         JSON.stringify(adminExiste)
         //console.log(adminExiste)
