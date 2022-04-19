@@ -175,7 +175,7 @@ async function createPedidosDemo(){
 
 async function VerificarDatosIniciales() {
   try{
-        let existeUsuarioDemo = await usuarios.findOne({email: 'cocoargento@gmail.com'})
+        let existeUsuarioDemo = await usuarios.findOne({$query: {email: 'cocoargento@gmail.com'},$maxTimeMS: 30000 })
   
         if( existeUsuarioDemo === null) {
           try {
@@ -186,7 +186,7 @@ async function VerificarDatosIniciales() {
             }
         }
 
-        let adminExiste = await usuarios.findOne({isAdmin: true})
+        let adminExiste = await usuarios.findOne({$query: {isAdmin: true}, $maxTimeMS: 30000})
                                   //COMPARAR OBJETO MONGOOSE CON STRING PASADO POR EL BODY
         JSON.stringify(adminExiste)
         //console.log(adminExiste)
@@ -199,7 +199,7 @@ async function VerificarDatosIniciales() {
             }  
         }
 
-        let ProductosExisten = await productos.find({$and: [{ "__v": {$eq: '0'}}]},{ codigo:1, nombre:1, descripcion:1, tamanio:1, precio:1,  '_id': false})
+        let ProductosExisten = await productos.find({$and: [{ "__v": {$eq: '0'}}]},{ codigo:1, nombre:1, descripcion:1, tamanio:1, precio:1,  '_id': false}).maxTimeMS(30000)
         //COMPARAR OBJETO MONGOOSE CON STRING 
         // JSON.stringify(ProductosExisten)
         // console.log(ProductosExisten)
@@ -212,7 +212,7 @@ async function VerificarDatosIniciales() {
             }
         }
 
-        let pedidosExisten = await pedidos.find()
+        let pedidosExisten = await pedidos.find().maxTimeMS(30000)
         //COMPARAR OBJETO MONGOOSE CON STRING 
         // JSON.stringify(ProductosExisten)
         //console.log(pedidosExisten.length)
@@ -226,7 +226,7 @@ async function VerificarDatosIniciales() {
               }
             }
 
-        let MediosDePagoExisten = await MediosDePago.find()
+        let MediosDePagoExisten = await MediosDePago.find().maxTimeMS(30000)
         //COMPARAR OBJETO MONGOOSE CON STRING 
         // JSON.stringify(ProductosExisten)
         // console.log(ProductosExisten)

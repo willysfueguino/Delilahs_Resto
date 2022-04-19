@@ -10,7 +10,7 @@ const schemaUsuario = Schema ({
     pass: {type: String, required: false, unique: false},
     direccion: {type: String, required: false, unique: false},
     telefono: {type: String, required: false, unique: false},
-    auth0Id: {type: String, required: false, unique: true},
+    auth0Id: {type: String, required: false, unique: false},
     nombreAuth0: {type: String, required: false, unique: false},
     apellidoAuth0: {type: String, required: false, unique: false},
     isAdmin: {type: Boolean, required: false, unique: false, default: "false"},
