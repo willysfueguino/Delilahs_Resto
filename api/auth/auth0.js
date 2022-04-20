@@ -24,7 +24,7 @@ tokenURL: 'https://' + process.env.AUTH0_DOMAIN + '/oauth/token',
 userInfoURL: 'https://' + process.env.AUTH0_DOMAIN + '/userinfo',
 clientID: process.env.AUTH0_CLIENT_ID,
 clientSecret: process.env.AUTH0_CLIENT_SECRET,
-callbackURL: 'https://c9cc-179-62-130-77.ngrok.io/login/callback',
+callbackURL: 'https://delilahs-resto.ml/login/callback',
 scope: [ 'profile', 'email' ]
 },
 function verify(issuer, profile, cb) {
@@ -65,7 +65,7 @@ async function createUser(res,next) {
       return res.status(201).json({Status: "Cuenta creada exitosamente", token: token});   
   } catch (error) {
     console.log(error)
-    return res.redirect('/api/auth0/logged')
+    return res.redirect('/auth0/logged')
   } 
 }
 
@@ -74,7 +74,7 @@ async function findUser(res, next){
       let email = userEmail
       let mailEncontrado = await usuarios.findOne( {email} )
       if (!mailEncontrado ){
-        return res.redirect('/api/auth0/register')
+        return res.redirect('/auth0/register')
       }
       else {
         token = await generateJwt(whoIs, process.env.JWT_SECRET_KEY);
@@ -86,7 +86,7 @@ async function findUser(res, next){
             token: token},
           { new: true }
         )
-        return res.redirect('/api/auth0/logged')
+        return res.redirect('/auth0/logged')
       }
       
     }
@@ -104,7 +104,7 @@ async function isUserAuthenticated(req,res){
  *  get:
  *    tags: [Auth0]
  *    summary: Login de usuario.
- *    description: Hacer click ===> https://c9cc-179-62-130-77.ngrok.io/api/auth0/login
+ *    description: Hacer click ===> https://delilahs-resto.ml/auth0/login
  */
 
 router.get('/api/auth0/login', passport.authenticate('openidconnect',{prompt: 'login', failureMessage: true}));
@@ -153,8 +153,8 @@ router.get('/api/auth0/register', async (req, res,next) => {
  */
 
 router.get('/login/callback', passport.authenticate('openidconnect', {
-  successRedirect: '/api/auth0/users',
-  failureRedirect: '/api/auth0/login'
+  successRedirect: '/auth0/users',
+  failureRedirect: '/auth0/login'
 }));
 
 /**
