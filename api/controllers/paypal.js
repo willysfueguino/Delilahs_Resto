@@ -22,8 +22,8 @@ const createPayment = (req, res) => {
             brand_name: `Delilahs Resto`,
             landing_page: 'NO_PREFERENCE', // Default, para mas informacion https://developer.paypal.com/docs/api/orders/v2/#definition-order_application_context
             user_action: 'PAY_NOW', // Accion para que en paypal muestre el monto del pago
-            return_url: `http://localhost:5000/api/paypal/execute-payment`, // Url despues de realizar el pago
-            cancel_url: `http://localhost:5000/api/paypal/cancel-payment` // Url despues de realizar el pago
+            return_url: `https://delilahs-resto.ml/paypal/execute-payment`, // Url despues de realizar el pago
+            cancel_url: `https://delilahs-resto.ml/paypal/cancel-payment` // Url despues de realizar el pago
         }
     }
 
@@ -66,7 +66,7 @@ const executePayment = (req, res) => {
 
 /**
  * @swagger
- * /api/paypal/create-payment:
+ * /paypal/create-payment:
  *  post:
  *    tags: [Paypal]
  *    summary: Crear pago de paypal
@@ -77,11 +77,11 @@ const executePayment = (req, res) => {
  */
 
 //    http://localhost:3000/create-payment [POST]
-router.post(`/api/paypal/create-payment`, createPayment)
+router.post(`/paypal/create-payment`, createPayment)
 
 /**
  * @swagger
- * /api/paypal/execute-payment:
+ * /paypal/execute-payment:
  *  get:
  *    tags: [Paypal]
  *    summary: Ejecutar pago de paypal.
@@ -90,6 +90,6 @@ router.post(`/api/paypal/create-payment`, createPayment)
  *      '200':
  *       description: Pago ejecutado exitosamente.
  */
-router.get(`/api/paypal/execute-payment`, executePayment)
+router.get(`/paypal/execute-payment`, executePayment)
 
 module.exports = router
