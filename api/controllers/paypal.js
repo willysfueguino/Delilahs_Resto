@@ -70,7 +70,7 @@ const executePayment = (req, res) => {
  *  post:
  *    tags: [Paypal]
  *    summary: Crear pago de paypal
- *    description: Se debe ejecutar el link obtenido mediante navegador para iniciar secion en Paypal y poder ejecutar el pago correctamente.
+ *    description: Se debe ejecutar el link obtenido mediante navegador para iniciar secion en Paypal y poder ejecutar el pago correctamente. Credenciales de usuario para poder crear el pago. Usuario "sb-32h178251263@personal.example.com" . Contraseña "XY$8TcU3"
  *    responses:
  *      '200':
  *       description: Pedido de pago creado exitosamente.

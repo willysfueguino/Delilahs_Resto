@@ -24,7 +24,7 @@ tokenURL: 'https://' + process.env.AUTH0_DOMAIN + '/oauth/token',
 userInfoURL: 'https://' + process.env.AUTH0_DOMAIN + '/userinfo',
 clientID: process.env.AUTH0_CLIENT_ID,
 clientSecret: process.env.AUTH0_CLIENT_SECRET,
-callbackURL: '/login/callback',
+callbackURL: 'https://c9cc-179-62-130-77.ngrok.io/login/callback',
 scope: [ 'profile', 'email' ]
 },
 function verify(issuer, profile, cb) {
@@ -104,7 +104,7 @@ async function isUserAuthenticated(req,res){
  *  get:
  *    tags: [Auth0]
  *    summary: Login de usuario.
- *    description: Redirige al URL de inicio de sesión con auth0. Solo puede ejectuarse desde el navegador.
+ *    description: Hacer click ===> https://c9cc-179-62-130-77.ngrok.io/api/auth0/login
  */
 
 router.get('/api/auth0/login', passport.authenticate('openidconnect',{prompt: 'login', failureMessage: true}));

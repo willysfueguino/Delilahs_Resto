@@ -24,7 +24,7 @@ let connectRedis = async function(){
             }
             console.log("Redis Attempting connection");
             // reconnect after
-            return Math.min(options.attempt * 10, 300); //in ms
+            return Math.min(options.attempt * 1000, 100); //in ms
         },
     });
     
