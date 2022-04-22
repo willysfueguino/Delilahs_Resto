@@ -1,0 +1,10 @@
+upload_project_to_s3:
+  only:
+    - main
+  image:
+    name: banst/awscli
+    entrypoint: [""]
+  script: 
+    - aws configure set region us-east-2
+
+    - aws s3 cp $CI_PROJECT_DIR/ s3://bucket-delilahs/ --recursive
